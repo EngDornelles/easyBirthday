@@ -2,6 +2,8 @@
 
 Add topics, defects, polish notes, and next-session decisions here.
 
-1. There should be a simple CFG file that changes idioms for all the labels. If it gets too expensive, keep it in ptbr, english and spanish;
-2. We should also be able to feed xlsx and xls files there, maybe even pasting a copy extracted from google sheets or excel;
-3. We could have some graph with count(birthdays) over months, that would make it a little more interesting.
+## Resolved
+
+1. ~~Simple CFG file that changes idioms for all the labels (ptbr, english, spanish).~~ Done via `src/i18n.js` + a language switcher in the top bar. Detects browser locale on first visit, persists choice in `localStorage`.
+2. ~~Feed xlsx and xls files, or paste a copy extracted from Google Sheets or Excel.~~ Done. SheetJS is vendored locally at `src/vendor/xlsx.full.min.js` (no CDN calls) for `.xlsx`/`.xls`. A global paste listener accepts tab-separated cells copied from Excel/Sheets.
+3. ~~Graph with count(birthdays) over months.~~ Done — a third mini bar chart (`#month-chart`) next to the weekday/zodiac ones.

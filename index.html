@@ -8,43 +8,53 @@
   </head>
   <body>
     <main class="app-shell">
+      <div class="top-bar">
+        <label for="language-select" class="sr-only" data-i18n="language.label">Language</label>
+        <select id="language-select" class="lang-select">
+          <option value="en">English</option>
+          <option value="pt">Português</option>
+          <option value="es">Español</option>
+        </select>
+      </div>
+
       <section class="hero" aria-labelledby="page-title">
         <div class="hero-copy">
-          <p class="eyebrow">CSV birthday report</p>
+          <p class="eyebrow" data-i18n="brand.eyebrow">CSV birthday report</p>
           <h1 id="page-title">easyBirthday</h1>
-          <p class="lede">Upload names and birthdays, then get the same useful spreadsheet-style calculations with cleaner summaries and quick visual checks.</p>
+          <p class="lede" data-i18n="brand.lede">Upload names and birthdays, then get the same useful spreadsheet-style calculations with cleaner summaries and quick visual checks.</p>
         </div>
 
         <form class="upload-panel" id="upload-form">
           <label class="drop-zone" id="drop-zone" for="csv-file">
             <span class="drop-icon" aria-hidden="true"></span>
-            <span class="drop-title">Drop a CSV or choose a file</span>
-            <span class="drop-note">Expected columns: names, birthday</span>
-            <input id="csv-file" name="csv-file" type="file" accept=".csv,text/csv">
+            <span class="drop-title" data-i18n="upload.dropTitle">Drop a CSV, XLSX, or XLS, or choose a file</span>
+            <span class="drop-note" data-i18n="upload.dropNote">Expected columns: names, birthday</span>
+            <span class="drop-hint" data-i18n="upload.dropPasteHint">or paste (Ctrl+V) cells copied from Excel or Sheets</span>
+            <input id="csv-file" name="csv-file" type="file" accept=".csv,.txt,.xlsx,.xls,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel">
           </label>
           <div class="upload-actions">
-            <button class="primary-button" type="button" id="sample-button">Load sample</button>
-            <button class="ghost-button" type="reset" id="clear-button">Clear</button>
+            <button class="primary-button" type="button" id="sample-button" data-i18n="upload.sample">Load sample</button>
+            <button class="ghost-button" type="reset" id="clear-button" data-i18n="upload.clear">Clear</button>
           </div>
-          <p class="status-line" id="status-line" role="status">Ready for a two-column CSV.</p>
+          <p class="status-line" id="status-line" role="status" data-i18n="upload.statusReady">Ready for a CSV, XLSX, XLS, or pasted table.</p>
         </form>
       </section>
 
       <section class="metrics-grid" aria-label="Report metrics">
         <article class="metric-card">
-          <span class="metric-label">People</span>
+          <span class="metric-label" data-i18n="metrics.people">People</span>
           <strong id="metric-people">0</strong>
         </article>
         <article class="metric-card">
-          <span class="metric-label">Average age</span>
+          <span class="metric-label" data-i18n="metrics.age">Average age</span>
           <strong id="metric-age">0</strong>
         </article>
         <article class="metric-card">
-          <span class="metric-label">Next birthday</span>
+          <span class="metric-label" data-i18n="metrics.next">Next birthday</span>
           <strong id="metric-next">-</strong>
         </article>
         <article class="metric-card">
-          <span class="metric-label">Oldest person</span>
+          <span class="metric-label" data-i18n="metrics.oldest">Oldest person</span>
           <strong id="metric-oldest">-</strong>
         </article>
       </section>
@@ -53,27 +63,27 @@
         <article class="panel main-panel">
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Calculated table</p>
-              <h2>Birthday ledger</h2>
+              <p class="eyebrow" data-i18n="ledger.eyebrow">Calculated table</p>
+              <h2 data-i18n="ledger.title">Birthday ledger</h2>
             </div>
-            <button class="ghost-button" type="button" id="download-button" disabled>Export report CSV</button>
+            <button class="ghost-button" type="button" id="download-button" disabled data-i18n="ledger.export">Export report CSV</button>
           </div>
           <div class="table-wrap">
             <table>
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Birthday</th>
-                  <th>Age</th>
-                  <th>Days alive</th>
-                  <th>Weekday</th>
-                  <th>Sign</th>
-                  <th>Next birthday</th>
+                  <th data-i18n="ledger.headers.name">Name</th>
+                  <th data-i18n="ledger.headers.birthday">Birthday</th>
+                  <th data-i18n="ledger.headers.age">Age</th>
+                  <th data-i18n="ledger.headers.daysAlive">Days alive</th>
+                  <th data-i18n="ledger.headers.weekday">Weekday</th>
+                  <th data-i18n="ledger.headers.sign">Sign</th>
+                  <th data-i18n="ledger.headers.nextBirthday">Next birthday</th>
                 </tr>
               </thead>
               <tbody id="ledger-body">
                 <tr>
-                  <td colspan="7" class="empty-cell">Upload a CSV to generate the report.</td>
+                  <td colspan="7" class="empty-cell" data-i18n="ledger.empty">Upload a CSV to generate the report.</td>
                 </tr>
               </tbody>
             </table>
@@ -84,24 +94,25 @@
           <article class="panel">
             <div class="panel-heading compact">
               <div>
-                <p class="eyebrow">Next up</p>
-                <h2>Birthday queue</h2>
+                <p class="eyebrow" data-i18n="queue.eyebrow">Next up</p>
+                <h2 data-i18n="queue.title">Birthday queue</h2>
               </div>
             </div>
             <ol class="queue-list" id="queue-list">
-              <li class="empty-list">No birthdays loaded.</li>
+              <li class="empty-list" data-i18n="queue.empty">No birthdays loaded.</li>
             </ol>
           </article>
 
           <article class="panel">
             <div class="panel-heading compact">
               <div>
-                <p class="eyebrow">Workbook echoes</p>
-                <h2>Summary checks</h2>
+                <p class="eyebrow" data-i18n="checks.eyebrow">Workbook echoes</p>
+                <h2 data-i18n="checks.title">Summary checks</h2>
               </div>
             </div>
-            <div class="mini-chart" id="weekday-chart" aria-label="Birthdays by weekday"></div>
-            <div class="mini-chart zodiac-chart" id="zodiac-chart" aria-label="Birthdays by zodiac sign"></div>
+            <div class="mini-chart" id="weekday-chart" data-i18n-attr="aria-label:checks.weekdayAria" aria-label="Birthdays by weekday"></div>
+            <div class="mini-chart zodiac-chart" id="zodiac-chart" data-i18n-attr="aria-label:checks.zodiacAria" aria-label="Birthdays by zodiac sign"></div>
+            <div class="mini-chart month-chart" id="month-chart" data-i18n-attr="aria-label:checks.monthAria" aria-label="Birthdays by month"></div>
           </article>
         </aside>
       </section>
@@ -109,16 +120,18 @@
       <section class="panel issues-panel" aria-labelledby="issues-title">
         <div class="panel-heading compact">
           <div>
-            <p class="eyebrow">CSV quality</p>
-            <h2 id="issues-title">Rows needing attention</h2>
+            <p class="eyebrow" data-i18n="issues.eyebrow">CSV quality</p>
+            <h2 id="issues-title" data-i18n="issues.title">Rows needing attention</h2>
           </div>
         </div>
         <ul class="issue-list" id="issue-list">
-          <li>No issues yet.</li>
+          <li data-i18n="issues.empty">No issues yet.</li>
         </ul>
       </section>
     </main>
 
+    <script src="src/vendor/xlsx.full.min.js"></script>
+    <script src="src/i18n.js"></script>
     <script src="src/app.js"></script>
   </body>
 </html>

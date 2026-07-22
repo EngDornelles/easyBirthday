@@ -1,10 +1,10 @@
 # easyBirthday
 
-A lightweight portfolio web app for turning a two-column birthday CSV into a visual birthday report.
+A lightweight portfolio web app for turning a two-column birthday spreadsheet into a visual birthday report. Available in English, Portuguese, and Spanish.
 
-## CSV format
+## Input format
 
-Upload a CSV with headers like:
+Upload a CSV, XLSX, or XLS file — or paste cells copied straight from Excel or Google Sheets — with columns like:
 
 ```csv
 names,birthday
@@ -12,7 +12,11 @@ Ana Silva,1990-03-25
 Bruno Costa,17/06/1985
 ```
 
-The app accepts common header aliases such as `name`, `names`, `nome`, `birthday`, `birthdate`, `data`, and `d. n.`. Slash dates are interpreted as `DD/MM/YYYY` when possible.
+The app accepts common header aliases such as `name`, `names`, `nome`, `birthday`, `birthdate`, `data`, and `d. n.`. Slash dates are interpreted as `DD/MM/YYYY` when possible. Comma, tab, and semicolon delimiters are auto-detected.
+
+## Language
+
+Use the switcher in the top-right corner to change the UI between English, Portuguese, and Spanish. Your choice is remembered for next time.
 
 ## Run locally
 
