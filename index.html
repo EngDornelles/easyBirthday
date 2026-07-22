@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>easyBirthday</title>
+    <link rel="stylesheet" href="src/styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">CSV birthday report</p>
+          <h1 id="page-title">easyBirthday</h1>
+          <p class="lede">Upload names and birthdays, then get the same useful spreadsheet-style calculations with cleaner summaries and quick visual checks.</p>
+        </div>
+
+        <form class="upload-panel" id="upload-form">
+          <label class="drop-zone" id="drop-zone" for="csv-file">
+            <span class="drop-icon" aria-hidden="true"></span>
+            <span class="drop-title">Drop a CSV or choose a file</span>
+            <span class="drop-note">Expected columns: names, birthday</span>
+            <input id="csv-file" name="csv-file" type="file" accept=".csv,text/csv">
+          </label>
+          <div class="upload-actions">
+            <button class="primary-button" type="button" id="sample-button">Load sample</button>
+            <button class="ghost-button" type="reset" id="clear-button">Clear</button>
+          </div>
+          <p class="status-line" id="status-line" role="status">Ready for a two-column CSV.</p>
+        </form>
+      </section>
+
+      <section class="metrics-grid" aria-label="Report metrics">
+        <article class="metric-card">
+          <span class="metric-label">People</span>
+          <strong id="metric-people">0</strong>
+        </article>
+        <article class="metric-card">
+          <span class="metric-label">Average age</span>
+          <strong id="metric-age">0</strong>
+        </article>
+        <article class="metric-card">
+          <span class="metric-label">Next birthday</span>
+          <strong id="metric-next">-</strong>
+        </article>
+        <article class="metric-card">
+          <span class="metric-label">Oldest person</span>
+          <strong id="metric-oldest">-</strong>
+        </article>
+      </section>
+
+      <section class="report-layout">
+        <article class="panel main-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Calculated table</p>
+              <h2>Birthday ledger</h2>
+            </div>
+            <button class="ghost-button" type="button" id="download-button" disabled>Export report CSV</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Birthday</th>
+                  <th>Age</th>
+                  <th>Days alive</th>
+                  <th>Weekday</th>
+                  <th>Sign</th>
+                  <th>Next birthday</th>
+                </tr>
+              </thead>
+              <tbody id="ledger-body">
+                <tr>
+                  <td colspan="7" class="empty-cell">Upload a CSV to generate the report.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <aside class="side-stack">
+          <article class="panel">
+            <div class="panel-heading compact">
+              <div>
+                <p class="eyebrow">Next up</p>
+                <h2>Birthday queue</h2>
+              </div>
+            </div>
+            <ol class="queue-list" id="queue-list">
+              <li class="empty-list">No birthdays loaded.</li>
+            </ol>
+          </article>
+
+          <article class="panel">
+            <div class="panel-heading compact">
+              <div>
+                <p class="eyebrow">Workbook echoes</p>
+                <h2>Summary checks</h2>
+              </div>
+            </div>
+            <div class="mini-chart" id="weekday-chart" aria-label="Birthdays by weekday"></div>
+            <div class="mini-chart zodiac-chart" id="zodiac-chart" aria-label="Birthdays by zodiac sign"></div>
+          </article>
+        </aside>
+      </section>
+
+      <section class="panel issues-panel" aria-labelledby="issues-title">
+        <div class="panel-heading compact">
+          <div>
+            <p class="eyebrow">CSV quality</p>
+            <h2 id="issues-title">Rows needing attention</h2>
+          </div>
+        </div>
+        <ul class="issue-list" id="issue-list">
+          <li>No issues yet.</li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="src/app.js"></script>
+  </body>
+</html>
+
